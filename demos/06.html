@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        perspective: 600px;
+        transform-style: preserve-3d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="frontend-face"></div>
+      <div class="backend-face"></div>
+      <div class="leftend-face"></div>
+      <div class="rightend-face"></div>
+      <div class="topend-face"></div>
+      <div class="bottomend-face"></div>
+    </div>
+  </body>
+</html>
+<style>
+  .card {
+    transform-style: preserve-3d;
+    margin: 300px auto;
+    width: 200px;
+    height: 200px;
+    background: red;
+    animation: ani 20s ease-in-out 0s infinite alternate;
+  }
+
+  .frontend-face {
+    width: 200px;
+    height: 200px;
+    background: pink;
+    transform: translate3d(0px, 0px, 100px);
+  }
+
+  .backend-face {
+    width: 200px;
+    height: 200px;
+    background: purple;
+    transform: translate3d(0px, -200px, -100px);
+  }
+
+  .leftend-face {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    transform: translate3d(0px, -300px, 0px) rotate3d(1, 0, 0, 90deg);
+  }
+
+  .rightend-face {
+    width: 200px;
+    height: 200px;
+    background: green;
+    transform: translate3d(0px, -700px, 0px) rotate3d(1, 0, 0, 90deg);
+  }
+
+  .topend-face {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    transform: translate3d(-100px, -800px, 0px) rotate3d(0, 1, 0, 90deg);
+  }
+
+  .bottomend-face {
+    width: 200px;
+    height: 200px;
+    background: orange;
+    transform: translate3d(100px, -1000px, 0px) rotate3d(0, 1, 0, 90deg);
+  }
+
+  @keyframes ani {
+    0% {
+      transform: rotate3d(1, 1, 1, 0deg) scale3d(1, 1, 1);
+    }
+
+    50% {
+      transform: rotate3d(1.1, 1.3, 1.2, 1000deg) scale3d(1.2, 1, 1.1);
+    }
+
+    100% {
+      transform: rotate3d(1, 1, 1, 0deg) scale3d(1, 1, 1);
+    }
+  }
+</style>
