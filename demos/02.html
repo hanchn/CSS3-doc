@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      .runner {
+        width: 266.666px;
+        height: 200px;
+        background: url(../assert/runner.png) no-repeat;
+        animation: runner 1s steps(24) infinite, move 20s infinite;
+        position: fixed;
+        right: -300px;
+        top: 0;
+      }
+
+      @keyframes runner {
+        100% {
+          background-position-x: -6400px;
+        }
+      }
+
+      @keyframes move {
+        100% {
+          right: 3000px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="runner"></div>
+  </body>
+</html>
