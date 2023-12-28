@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background: #000;
+      }
+
+      .myGame {
+        width: 100%;
+        height: 100%;
+        perspective: 2000px;
+        transform-style: preserve-3d;
+      }
+
+      .box {
+        width: 18px;
+        height: 25px;
+        margin: 200px auto;
+        transform: rotate3d(1, 1, 1, 0deg);
+        transform-style: preserve-3d;
+        text-align: center;
+        line-height: 200px;
+        color: #fff;
+        font-size: 100px;
+        background: url("../assert/frontend.png") center center/cover no-repeat;
+        animation: ani 3s ease-in-out 0s 1 forwards;
+      }
+
+      .boxbg {
+        width: 100%;
+        height: 100%;
+        transform: translate3d(0, 0px, -1px);
+        background: url("../assert/backend.png") center center/cover no-repeat;
+      }
+      @keyframes ani {
+        0% {
+        }
+        100% {
+          width: 180px;
+          height: 251px;
+          transform: rotate3d(1, 1, 1, 360deg);
+        }
+      }
+
+      .lightBg {
+        opacity: 0;
+        width: 800px;
+        height: 800px;
+        background: url("../assert/light.png") center center no-repeat;
+        transform: translate3d(-300px, -520px, -2px);
+        animation: lightAni 10s ease-in-out 3s infinite forwards alternate;
+      }
+
+      @keyframes lightAni {
+        0% {
+          opacity: 1;
+          transform: translate3d(-300px, -520px, -2px) scale3d(1, 1, 5);
+        }
+        50% {
+          opacity: 1;
+          transform: translate3d(-300px, -520px, -2px) scale3d(1.4, 1.4, 5);
+        }
+        100% {
+          opacity: 1;
+          transform: translate3d(-300px, -520px, -2px) scale3d(1.2, 1.2, 5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="myGame">
+      <div class="box">
+        <div class="boxbg"></div>
+        <div class="lightBg"></div>
+      </div>
+    </div>
+  </body>
+</html>

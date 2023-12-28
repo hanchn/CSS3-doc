@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card"></div>
+    <div class="light"></div>
+  </body>
+</html>
+<style>
+  .light {
+    opacity: 0;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background: url("../assert/light.png") center center/contain no-repeat;
+    transform: translate3d(0px, -400px, 2px);
+    animation: lightAni 10s ease-in-out 2s infinite alternate;
+  }
+  @keyframes lightAni {
+    100% {
+      opacity: 0.4;
+      transform: translate3d(30px, -460px, 2px) rotate3d(0, 0, 1, 360deg);
+    }
+  }
+  .card {
+    position: relative;
+    width: 180px;
+    height: 251px;
+    margin: 200px auto 0 auto;
+    background: url("../assert/frontend.png");
+    animation: ani 4s ease-in-out 0s infinite alternate;
+    transform-style: preserve-3d;
+  }
+
+  .card::after {
+    content: "";
+    display: block;
+    width: 180px;
+    height: 251px;
+    margin: 200px auto;
+    background: url("../assert/backend.png");
+    transform: translate3d(0, 0px, -1px);
+    z-index: -1;
+  }
+
+  @keyframes ani {
+    100% {
+      transform: rotate3d(1, 1, 1, -300deg);
+    }
+  }
+</style>

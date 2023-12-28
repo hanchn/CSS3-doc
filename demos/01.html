@@ -6,16 +6,148 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="triangle"></div>
+    <div class="conic">
+      <div class="conic-papa">
+        <div class="conic-gradient"></div>
+        <div class="conic-cover"><span>内容展示</span></div>
+      </div>
+    </div>
   </body>
 </html>
 <style>
   /* 绘制一个等腰三角形 */
-  .triangle {
+  .conic {
+    width: 420px;
+    margin: 200px auto;
+    cursor: pointer;
+    transform-style: preserve-3d;
+  }
+  .conic:hover {
+    animation: conicAni 1s linear 0s 1 forwards;
+  }
+  .conic::after {
+    display: block;
+    content: "";
     width: 0;
     height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid red;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #111;
+    transform: rotate3d(0, 0, 1, 180deg);
+    margin: 0 auto;
+  }
+  .conic-papa {
+    width: 420px;
+    height: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .conic-gradient {
+    width: 600px;
+    height: 600px;
+    top: -240px;
+    left: -90px;
+    position: absolute;
+    border-radius: 100%;
+    background: conic-gradient(#b6cd32 0deg, #111 140deg);
+    opacity: 0;
+  }
+
+  .conic:hover .conic-gradient {
+    animation: ani 1s linear 0s 1 forwards;
+  }
+
+  .conic:hover .conic-cover span {
+    display: block;
+    text-shadow: 3px 2px 2px #b6cd32;
+    animation: coverAni 1s linear 0s 1 forwards;
+  }
+  @keyframes ani {
+    0% {
+      transform: rotate3d(0, 0, 1, -150deg);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate3d(0, 0, 1, 120deg);
+      opacity: 0;
+    }
+  }
+  .conic-cover {
+    text-align: center;
+    color: #fff;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 112px;
+    width: 412px;
+    height: 112px;
+    position: absolute;
+    background: #111;
+    overflow: hidden;
+    border-radius: 3px;
+    top: 4px;
+    left: 4px;
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes coverAni {
+    0% {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 60px;
+    }
+    20% {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 50px;
+      transform: rotate3d(1, 0, 1, -12deg) scale3d(1.2, 1.2, 1.2);
+    }
+    30% {
+      font-size: 55px;
+      color: rgba(182, 205, 50, 1);
+      transform: rotate3d(1, 0, 1, 12deg) scale3d(0.8, 0.8, 0.8);
+    }
+    50% {
+      font-size: 62px;
+      transform: rotate3d(1, 0, 1, -8deg) scale3d(1.1, 1.1, 1.1);
+    }
+    70% {
+      font-size: 57px;
+      color: rgba(182, 205, 50, 1);
+      transform: rotate3d(1, 0, 1, 8deg) scale3d(0.9, 0.9, 0.9);
+    }
+    90% {
+      font-size: 61px;
+      color: rgba(182, 205, 50, 1);
+      transform: rotate3d(1, 0, 1, -3deg) scale3d(1, 1, 1);
+    }
+    100% {
+      font-size: 60px;
+      color: rgba(255, 255, 255, 1);
+      transform: rotate3d(1, 0, 1, 0deg) scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes conicAni {
+    0% {
+    }
+    20% {
+      transform: rotate3d(1, 0, 1, 5deg);
+    }
+    30% {
+      transform: rotate3d(1, 0, 1, -5deg);
+    }
+    50% {
+      transform: rotate3d(1, 0, 1, 3deg);
+    }
+    70% {
+      transform: rotate3d(1, 0, 1, -3deg);
+    }
+    90% {
+      transform: rotate3d(1, 0, 1, 1deg);
+    }
+    100% {
+      transform: rotate3d(1, 0, 1, 0deg);
+    }
   }
 </style>

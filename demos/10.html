@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conic-papa">
+      <div class="conic-gradient"></div>
+      <div class="conic-cover"></div>
+    </div>
+  </body>
+</html>
+<style>
+  .conic-papa {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .conic-gradient {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    position: absolute;
+    border-radius: 100%;
+    background: conic-gradient(#9acd32 60deg, #111 200deg);
+    animation: ani 4s linear 0s infinite forwards;
+  }
+  @keyframes ani {
+    100% {
+      transform: rotate3d(0, 0, 1, -359deg);
+    }
+  }
+  .conic-cover {
+    color: #9acd32;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 86px;
+    width: 86px;
+    height: 86px;
+    position: absolute;
+    background: #111;
+    overflow: hidden;
+    border-radius: 100%;
+    top: 7px;
+    left: 7px;
+    position: absolute;
+  }
+</style>

@@ -4,62 +4,146 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        perspective: 2000px;
-        transform-style: preserve-3d;
-      }
-    </style>
   </head>
   <body>
-    <div class="card">
-      <div class="frontend-face"></div>
-      <div class="backend-face"></div>
-      <div class="leftend-face"></div>
-      <div class="rightend-face"></div>
-      <div class="topend-face"></div>
-      <div class="bottomend-face"></div>
+    <div class="box">
+      <div class="box-end left">left</div>
+      <div class="box-end right">right</div>
+      <div class="box-end backend">backend</div>
+      <div class="box-end bottom">bottom</div>
+      <div class="box-end frontend">
+        <div class="box-end frontendBegin">frontend</div>
+        <div class="box-end frontendend">top</div>
+      </div>
     </div>
   </body>
 </html>
 <style>
-  .card {
+  * {
+    margin: 0;
+  }
+  html,
+  body {
+    height: 100%;
+    perspective: 2000px;
     transform-style: preserve-3d;
-    margin: 300px auto;
+  }
+
+  .box {
     width: 200px;
     height: 200px;
+    margin: 200px auto;
     background: red;
-    animation: ani 20s ease-in-out 0s infinite alternate;
+    transform-style: preserve-3d;
+    transform: rotate3d(1, 1, 0, 45deg);
+    animation: boxAni 3s ease-in-out 7s infinite forwards;
   }
 
-  .frontend-face {
-    width: 200px;
-    height: 200px;
+  .box-end {
+    text-align: center;
+    line-height: 200px;
+    color: #fff;
+    font-size: 50px;
+  }
+
+  .box-end.left {
+    background: green;
+    transform: translate3d(-200px, 0px, -100px);
+    transform-origin: 100% 50%;
+    animation: leftAni 1s linear 2s 1 forwards;
+  }
+
+  .box-end.right {
+    background: blue;
+    transform: translate3d(200px, -200px, -100px);
+    transform-origin: 0% 50%;
+    animation: rightAni 1s linear 3s 1 forwards;
+  }
+
+  .box-end.backend {
+    background: yellow;
+    transform: translate3d(0px, -600px, -100px);
+    transform-origin: 50% 100%;
+    animation: backendAni 1s linear 1s 1 forwards;
+  }
+
+  .box-end.bottom {
     background: pink;
-    transform: translate3d(0px, 0px, 100px);
+    transform: translate3d(0px, -600px, -100px);
   }
 
-  @keyframes ani {
+  .box-end.frontend {
+    transform-style: preserve-3d;
+    background: purple;
+    transform: translate3d(0px, -600px, -100px);
+    transform-origin: 50% 00%;
+    animation: frontendAni 1s linear 4s 1 forwards,
+      frontendBgAni 1s linear 5.5s 1 forwards;
+  }
+
+  .frontendBegin {
+    background: orange;
+  }
+  .frontendend {
+    background: gray;
+    transform-origin: 50% 0%;
+    animation: frontendendAni 1s linear 5s 1 forwards;
+  }
+
+  @keyframes boxAni {
     0% {
-      transform: rotate3d(1, 1, 1, 0deg) scale3d(1, 1, 1);
+      transform: rotate3d(1, 1, 0, 45deg);
     }
-
-    50% {
-      transform: rotate3d(1.1, 1.3, 1.2, 1000deg) scale3d(1.2, 1, 1.1);
+    20% {
+      transform: rotate3d(1, 0, 0, 350deg);
     }
-
+    40% {
+      transform: rotate3d(0, 1, 1, -300deg);
+    }
+    60% {
+      transform: rotate3d(0, 0, 1, 300deg);
+    }
+    80% {
+      transform: rotate3d(1, 0, 1, 150deg);
+    }
     100% {
-      transform: rotate3d(1, 1, 1, 0deg) scale3d(1, 1, 1);
+      transform: rotate3d(1, 1, 0, 45deg);
+    }
+  }
+
+  @keyframes leftAni {
+    100% {
+      transform: translate3d(-200px, 0px, -100px) rotate3d(0, 1, 0, 90deg);
+    }
+  }
+
+  @keyframes rightAni {
+    100% {
+      transform: translate3d(200px, -200px, -100px) rotate3d(0, 1, 0, -90deg);
+    }
+  }
+
+  @keyframes backendAni {
+    100% {
+      transform: translate3d(0px, -600px, -100px) rotate3d(1, 0, 0, -90deg);
+    }
+  }
+
+  @keyframes frontendAni {
+    100% {
+      transform: translate3d(0px, -600px, -100px) rotate3d(1, 0, 0, 90deg);
+    }
+  }
+
+  @keyframes frontendendAni {
+    100% {
+      transform: rotate3d(1, 0, 0, 90deg);
+    }
+  }
+
+  @keyframes frontendBgAni {
+    100% {
+      background: rgba(128, 0, 128, 0);
     }
   }
 </style>
