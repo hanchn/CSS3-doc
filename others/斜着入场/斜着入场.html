@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>Document</title>
+<style type="text/css">
+body,
+html {
+	height: 100%;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+#view {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}	
+#view2,
+#translateZ,
+#rotate {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+#rotate {
+	margin: -585px 0 0 -64.5px;
+	width: 129px;
+	height: 1170px;
+}
+#rotate span {
+	position: absolute;
+	left: 129px;
+	top: 0;
+	width: 129px;
+	height: 1170px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+	-webkit-transform-origin: left;
+	transform-origin: left;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+#rotate>span {
+	left: 0;
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+}
+</style>
+<script type="text/javascript" src="js/m.Tween.js"></script>
+<script type="text/javascript">
+function setPerc(){
+	resetview();
+	window.onresize = resetview;
+	function resetview(){
+		var view = document.querySelector('#view');
+		var mian = document.querySelector('#view2');
+		var deg = 52.5;//是参照原网站
+		var height = document.documentElement.clientHeight;
+		var R = Math.round(Math.tan(deg/180*Math.PI)*height*.5);
+		view.style.WebkitPerspective = view.style.perspective = R + "px";
+		css(mian,"translateZ",R);
+		var translateZ1 = css(mian,"translateZ");
+		console.log("view2 translateZ:" +translateZ1);
+	}
+}
+function create(){
+	var rotate = document.querySelector('#rotate');
+	var old = rotate;
+	for(var i = 0; i < 20; i++){
+		var span = document.createElement("span");
+		span.style.background = "url(bg/"+(i+1)+".png)";
+		old.appendChild(span);
+		old = span;
+	}
+}
+window.onload = function(){
+	setPerc();
+	create();
+	var tZ = document.querySelector('#translateZ');
+	var rotate = document.querySelector('#rotate');
+	var spans = rotate.querySelectorAll('span');
+	var R = 407;
+	css(rotate,"rotateY",60);
+	css(rotate,"translateZ",-R);
+	css(tZ,"translateX",-1600);
+	css(tZ,"translateZ",1600);
+
+	var rotaterotateY = css(rotate,"rotateY");
+	var rotatetranslateZ = css(rotate,"translateZ");
+	var tZtranslateX = css(tZ,"translateX");
+	var tZtranslateZ = css(tZ,"translateZ");
+	console.log("rotate rotateY:" +rotaterotateY);
+	console.log("rotate translateZ:" +rotatetranslateZ);
+	console.log("translateZ translateX:" +tZtranslateX);
+	console.log("translateZ translateZ:" +tZtranslateZ);
+
+	console.log("function1");
+	MTween({
+		el:tZ,
+		target:{
+			translateX: 0,
+			translateZ: -160
+		},
+		type: "easeOut",
+		time: 2000 ,
+		callBack:function(){
+			// console.log("translateZ translateX:");
+			var tZtranslateX = css(tZ,"translateX");
+			var tZtranslateZ = css(tZ,"translateZ");
+			console.log("translateZ translateX:" +tZtranslateX);
+			console.log("translateZ translateZ:" +tZtranslateZ);
+		}
+	});
+	
+	console.log("function2");
+	setTimeout(function(){
+		var nub = spans.length-1;
+		var timer = setInterval(function(){
+			MTween({
+				el:spans[nub],
+				target:{
+					rotateY: -18
+				},
+				type: "easeOut",
+				time: 800 ,
+				callBack:function(){
+					// console.log("spans[" + nub + "]:");
+					var spansrotateY = css(spans[nub],"rotateY");
+					console.log("spans[" + nub + "]:" +spansrotateY);
+				}
+			});
+			nub--;
+			if(nub < 1 ){
+				clearInterval(timer);
+				console.log("spans rotateY 执行完毕");
+			}
+		},100);
+	},1000);
+
+	console.log("function3");
+	setTimeout(function(){
+		MTween({
+				el:rotate,
+				target:{
+					rotateY: -720
+				},
+				type: "linear",
+				time: 60000 ,
+				callBack:function(){
+					// console.log("rotate rotateY:" );
+					var rotaterotateY = css(rotate,"rotateY");
+					console.log("rotate rotateY:" +rotaterotateY);
+				}
+			});
+	},4500);
+};
+</script>
+</head>
+<body>
+<div id="view">
+	<div id="view2">
+		<div id="translateZ">
+			<div id="rotate">
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
