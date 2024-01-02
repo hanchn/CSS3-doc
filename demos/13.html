@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="space-papa">
+      <div class="space leftend">1</div>
+      <div class="space backend">2</div>
+      <div class="space rightend">3</div>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+  }
+
+  html,
+  body {
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective: 2400px;
+  }
+</style>
+<style>
+  .space-papa {
+    font-size: 300px;
+    line-height: 500px;
+    text-align: center;
+    color: transparent;
+    width: 500px;
+    height: 500px;
+    margin: 200px auto;
+    transform-style: preserve-3d;
+    transform: rotate3d(0, 1, 0, 3deg) translate3d(0px, 100px, 700px);
+    animation: ani 3s linear 0s infinite backwards;
+  }
+
+  @keyframes ani {
+    0% {
+      transform: rotate3d(0, 1, 0, 0deg) translate3d(0px, 100px, 700px);
+    }
+    25% {
+      transform: rotate3d(0, 1, 0, -3deg) translate3d(0px, 100px, 700px);
+    }
+    50% {
+      transform: rotate3d(0, 1, 0, 0deg) translate3d(0px, 100px, 700px);
+    }
+    75% {
+      transform: rotate3d(0, 1, 0, 3deg) translate3d(0px, 100px, 700px);
+    }
+    100% {
+      transform: rotate3d(0, 1, 0, 0deg) translate3d(0px, 100px, 700px);
+    }
+  }
+
+  .space {
+    width: 100%;
+    height: 100%;
+  }
+
+  .leftend {
+    background: url("../assert/cube_0.jpg") center center/cover no-repeat;
+    transform-origin: 50% 50%;
+    transform: rotate3d(0, 1, 0, 90deg) translate3d(0px, 0px, -250px);
+  }
+  .backend {
+    transform-origin: 50% 50%;
+    background: url("../assert/cube_1.jpg") center center/cover no-repeat;
+    transform: rotate3d(0, 1, 0, 0deg) translate3d(0px, -500px, -250px);
+  }
+  .rightend {
+    transform-origin: 50% 50%;
+    background: url("../assert/cube_2.jpg") center center/cover no-repeat;
+    transform: rotate3d(0, 1, 0, -90deg) translate3d(0px, -1000px, -250px);
+  }
+
+  .topend {
+    background: url("../assert/cube_4.jpg") center center/cover no-repeat;
+  }
+  .bottomend {
+    background: url("../assert/cube_5.jpg") center center/cover no-repeat;
+    transform: rotate3d(1, 0, 0, 90deg) translate3d(0px, 0px, 2250px);
+  }
+
+  .frontend {
+    background: url("../assert/cube_3.jpg");
+    transform: rotate3d(0, 1, 0, 180deg) translate3d(0px, -1500px, -250px);
+  }
+</style>

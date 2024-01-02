@@ -7,13 +7,13 @@
   </head>
   <body>
     <div class="box">
-      <div class="box-end left">left</div>
-      <div class="box-end right">right</div>
-      <div class="box-end backend">backend</div>
-      <div class="box-end bottom">bottom</div>
+      <div class="box-end left">左面</div>
+      <div class="box-end right">右面</div>
+      <div class="box-end backend">背面</div>
+      <div class="box-end bottom">底面</div>
       <div class="box-end frontend">
-        <div class="box-end frontendBegin">frontend</div>
-        <div class="box-end frontendend">top</div>
+        <div class="box-end frontendBegin">前面</div>
+        <div class="box-end frontendend">上面</div>
       </div>
     </div>
   </body>
@@ -37,6 +37,27 @@
     transform-style: preserve-3d;
     transform: rotate3d(1, 1, 0, 45deg);
     animation: boxAni 3s ease-in-out 7s infinite forwards;
+  }
+
+  @keyframes boxAni {
+    0% {
+      transform: rotate3d(1, 1, 0, 45deg);
+    }
+    20% {
+      transform: rotate3d(1, 0, 0, 350deg);
+    }
+    40% {
+      transform: rotate3d(0, 1, 1, -300deg);
+    }
+    60% {
+      transform: rotate3d(0, 0, 1, 300deg);
+    }
+    80% {
+      transform: rotate3d(1, 0, 1, 150deg);
+    }
+    100% {
+      transform: rotate3d(1, 1, 0, 45deg);
+    }
   }
 
   .box-end {
@@ -88,27 +109,6 @@
     background: gray;
     transform-origin: 50% 0%;
     animation: frontendendAni 1s linear 5s 1 forwards;
-  }
-
-  @keyframes boxAni {
-    0% {
-      transform: rotate3d(1, 1, 0, 45deg);
-    }
-    20% {
-      transform: rotate3d(1, 0, 0, 350deg);
-    }
-    40% {
-      transform: rotate3d(0, 1, 1, -300deg);
-    }
-    60% {
-      transform: rotate3d(0, 0, 1, 300deg);
-    }
-    80% {
-      transform: rotate3d(1, 0, 1, 150deg);
-    }
-    100% {
-      transform: rotate3d(1, 1, 0, 45deg);
-    }
   }
 
   @keyframes leftAni {
